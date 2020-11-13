@@ -1,14 +1,14 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class migrationV11605244233425 implements MigrationInterface {
-  name = "migrationV11605244233425";
+export class migration1605255359354 implements MigrationInterface {
+  name = "migration1605255359354";
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
-      `CREATE TABLE "users" ("id" SERIAL NOT NULL, "username" character varying NOT NULL, CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`
+      `CREATE TABLE "users" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "username" character varying NOT NULL, CONSTRAINT "PK_a3ffb1c0c8416b9fc6f907b7433" PRIMARY KEY ("id"))`
     );
     await queryRunner.query(
-      `CREATE TABLE "tweets" ("id" SERIAL NOT NULL, "Tweetname" character varying NOT NULL, "userId" integer NOT NULL, CONSTRAINT "PK_19d841599ad812c558807aec76c" PRIMARY KEY ("id"))`
+      `CREATE TABLE "tweets" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "text" character varying NOT NULL, "userId" uuid NOT NULL, CONSTRAINT "PK_19d841599ad812c558807aec76c" PRIMARY KEY ("id"))`
     );
     await queryRunner.query(
       `ALTER TABLE "tweets" ADD CONSTRAINT "FK_8039099215c037f10c11b0cf228" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE NO ACTION`

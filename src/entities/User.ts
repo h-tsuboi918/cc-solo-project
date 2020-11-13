@@ -3,8 +3,8 @@ import Tweet from "./Tweet";
 
 @Entity({ name: "users" })
 class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   username: string;

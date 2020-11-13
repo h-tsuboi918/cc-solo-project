@@ -3,11 +3,11 @@ import User from "./User";
 
 @Entity({ name: "tweets" })
 class Tweet {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
-  Tweetname: string;
+  text: string;
 
   @ManyToOne(() => User, (user) => user.tweets, {
     onDelete: "CASCADE",
