@@ -1,26 +1,40 @@
 {
-  "name": "cc-solo-api",
-  "version": "1.0.0",
-  "description": "solo-api-project",
-  "main": "index.js",
-  "author": "h-tsuboi918",
-  "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "express": "^4.17.1",
-    "typeorm": "^0.2.29"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "eclint": "^2.8.1",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-config-problems": "^5.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
-    "mocha": "^8.2.1",
-    "nodemon": "^2.0.6",
-    "prettier": "^2.1.2",
-    "pretty-quick": "^3.1.0"
-  }
+   "name": "cc-solo-api",
+   "version": "1.0.0",
+   "description": "solo-api-project",
+   "main": "index.js",
+   "author": "h-tsuboi918",
+   "license": "MIT",
+   "private": false,
+   "scripts": {
+      "typeorm-init": "typeorm init --express --database postgres",
+      "dev": "node --inspect -r ts-node/register -r dotenv/config src/index.ts",
+      "orm": "ts-node -r dotenv/config ./node_modules/typeorm/cli.js --config src/ormconfig.ts",
+      "makeMigrations": "yarn orm migration:generate",
+      "start": "ts-node src/index.ts"
+   },
+   "dependencies": {
+      "dotenv": "^8.2.0",
+      "express": "^4.15.4",
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.29",
+      "pg": "^8.4.0",
+      "body-parser": "^1.18.1"
+   },
+   "devDependencies": {
+      "chai": "^4.2.0",
+      "chai-http": "^4.3.0",
+      "eslint": "^7.13.0",
+      "eslint-config-prettier": "^6.15.0",
+      "eslint-config-problems": "^5.0.0",
+      "eslint-plugin-prettier": "^3.1.4",
+      "husky": "^4.3.0",
+      "mocha": "^8.2.1",
+      "nodemon": "^2.0.6",
+      "prettier": "^2.1.2",
+      "pretty-quick": "^3.1.0",
+      "ts-node": "3.3.0",
+      "typescript": "3.3.3333",
+      "@types/node": "^8.0.29"
+   }
 }
