@@ -12,6 +12,8 @@
       "dev": "node --inspect -r ts-node/register -r dotenv/config src/index.ts",
       "orm": "ts-node -r dotenv/config ./node_modules/typeorm/cli.js --config src/ormconfig.ts",
       "makeMigrations": "yarn orm migration:generate",
+      "migrate": "yarn orm migration:run",
+      "rollback": "yarn orm migration:revert",
       "testConnection": "ts-node -r dotenv/config src/scripts/testConnection.ts",
       "start": "ts-node src/index.ts"
    },
@@ -22,7 +24,8 @@
       "express": "^4.15.4",
       "pg": "^8.4.0",
       "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.29"
+      "typeorm": "0.2.29",
+      "typeorm-seeding": "^1.6.1"
    },
    "devDependencies": {
       "@types/jsonwebtoken": "^8.5.0",
