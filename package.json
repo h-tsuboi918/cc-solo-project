@@ -16,8 +16,9 @@
       "rollback": "yarn orm migration:revert",
       "testConnection": "ts-node -r dotenv/config src/scripts/testConnection.ts",
       "test": "mocha --inspect -r ts-node/register -r dotenv/config src/tests/index.ts",
-      "start": "ts-node src/index.ts"
-   },
+      "start": "ts-node src/index.ts",
+      "pre-commit": "yarn lint"
+    },
    "dependencies": {
       "@types/lodash.pick": "^4.4.6",
       "@types/pg": "^7.14.6",
