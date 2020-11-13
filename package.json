@@ -1,0 +1,26 @@
+{
+  "name": "cc-solo-api",
+  "version": "1.0.0",
+  "description": "solo-api-project",
+  "main": "index.js",
+  "author": "h-tsuboi918",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.17.1",
+    "typeorm": "^0.2.29"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eclint": "^2.8.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-problems": "^5.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.1.2",
+    "pretty-quick": "^3.1.0"
+  }
+}
