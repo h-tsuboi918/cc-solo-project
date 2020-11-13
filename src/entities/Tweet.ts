@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import User from "./User";
 
-@Entity({name:"tweets"})
+@Entity({ name: "tweets" })
 class Tweet {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,15 +9,13 @@ class Tweet {
   @Column()
   Tweetname: string;
 
-  @ManyToOne(() => User,(user) => user.tweets,{
-      onDelete:'CASCADE',
+  @ManyToOne(() => User, (user) => user.tweets, {
+    onDelete: "CASCADE",
   })
-  public user: User
+  public user: User;
 
   @Column()
   userId: number;
-
 }
-
 
 export default Tweet;
