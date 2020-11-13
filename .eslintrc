@@ -1,17 +1,17 @@
 {
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
+  "extends": [
+      "plugin:@typescript-eslint/recommended", // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+      "prettier/@typescript-eslint", // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+      "plugin:prettier/recommended" // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+  ],
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+      "ecmaVersion": 2018, // Allows for the parsing of modern ECMAScript features
+      "sourceType": "module" // Allows for the use of imports
   },
-  "env": {
-    "es6": true,
-    "node": true,
-    "mocha": true
-  },
-  "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
-    "no-console": 0
-  },
-  "extends": ["eslint:recommended", "problems", "plugin:prettier/recommended"]
+      // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/explicit-function-return-type": "off"
+  }
 }

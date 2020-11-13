@@ -7,21 +7,28 @@
    "license": "MIT",
    "private": false,
    "scripts": {
+      "lint": "eslint ./src/**/*.ts --fix",
       "typeorm-init": "typeorm init --express --database postgres",
       "dev": "node --inspect -r ts-node/register -r dotenv/config src/index.ts",
       "orm": "ts-node -r dotenv/config ./node_modules/typeorm/cli.js --config src/ormconfig.ts",
       "makeMigrations": "yarn orm migration:generate",
+      "testConnection": "ts-node -r dotenv/config src/scripts/testConnection.ts",
       "start": "ts-node src/index.ts"
    },
    "dependencies": {
+      "@types/pg": "^7.14.6",
+      "body-parser": "^1.18.1",
       "dotenv": "^8.2.0",
       "express": "^4.15.4",
-      "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.29",
       "pg": "^8.4.0",
-      "body-parser": "^1.18.1"
+      "reflect-metadata": "^0.1.10",
+      "typeorm": "0.2.29"
    },
    "devDependencies": {
+      "@types/jsonwebtoken": "^8.5.0",
+      "@types/node": "^8.0.29",
+      "@typescript-eslint/eslint-plugin": "^4.7.0",
+      "@typescript-eslint/parser": "^4.7.0",
       "chai": "^4.2.0",
       "chai-http": "^4.3.0",
       "eslint": "^7.13.0",
@@ -34,7 +41,6 @@
       "prettier": "^2.1.2",
       "pretty-quick": "^3.1.0",
       "ts-node": "3.3.0",
-      "typescript": "3.3.3333",
-      "@types/node": "^8.0.29"
+      "typescript": "3.3.3333"
    }
 }
