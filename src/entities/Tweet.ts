@@ -15,7 +15,7 @@ class Tweet {
   public user: User;
 
   @Column()
-  userId: number;
+  userId: string;
 }
 
 export default Tweet;

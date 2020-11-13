@@ -1,5 +1,4 @@
 import express, { Application } from "express";
-
 import BaseController from "./services/common/controller";
 import UserController from "./services/users/controller";
 import TweetController from "./services/tweets/controller";
@@ -19,7 +18,6 @@ class App {
       console.log(`App listening on localhost:${this.port}`);
     };
   }
-
   protected registerServices(services: BaseController[]): void {
     services.forEach((_service) =>
       this.app.use(_service.path, _service.router)

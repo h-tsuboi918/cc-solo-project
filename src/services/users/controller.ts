@@ -43,7 +43,7 @@ class UserController extends BaseController {
       if (!users) {
         res.status(404).send({ error: "user not found" });
       }
-      res.json(users);
+      res.status(200).json(users);
     } catch (err) {
       next(err);
     }
@@ -57,9 +57,10 @@ class UserController extends BaseController {
     try {
       const user = await this.manager.getUser(req.params.id);
       if (!user) {
-        res.status(404).end();
+        return res.status(404).end();
       }
-      res.json(user);
+      res.status(200).json(user);
+      next();
     } catch (err) {
       next(err);
     }
@@ -73,9 +74,9 @@ class UserController extends BaseController {
     try {
       const user = await this.manager.createUser(req.body);
       if (!user) {
-        res.status(500).end();
+        return res.status(500).end();
       } else {
-        res.status(201).json(user);
+        return res.status(201).json(user);
       }
     } catch (err) {
       next(err);
@@ -90,9 +91,9 @@ class UserController extends BaseController {
     try {
       const user = await this.manager.updateUser(req.params.id, req.body);
       if (!user) {
-        res.status(500).end();
+        return res.status(500).end();
       } else {
-        res.status(200).json(user);
+        return res.status(200).json(user);
       }
     } catch (err) {
       next(err);
@@ -106,7 +107,7 @@ class UserController extends BaseController {
   ): Promise<void> => {
     try {
       await this.manager.deleteUser(req.params.id);
-      res.status(204).end();
+      return res.status(204).end();
     } catch (err) {
       next(err);
     }
