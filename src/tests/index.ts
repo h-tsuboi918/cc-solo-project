@@ -21,6 +21,8 @@ describe("tsuttakater API Server", () => {
     server = setupServer().app;
     userRepository = getRepository(User);
     tweetRepository = getRepository(Tweet);
+    await userRepository.delete({ id: Not(IsNull()) });
+    await tweetRepository.delete({ id: Not(IsNull()) });
   });
 
   beforeEach(async () => {
@@ -124,6 +126,17 @@ describe("tsuttakater API Server", () => {
     //assertion
     res.should.have.status(204);
     res2.should.have.status(404);
+  });
+
+  it("GET /api/tweets should return entire tweet list", async () => {
+    //setup
+    const endpoint = "/api/tweets";
+    //exercise
+    const res = await request.get(endpoint);
+    //assertion
+    res.should.have.status(200);
+    res.should.be.json;
+    JSON.parse(res.text).length.should.be.at.least(1);
   });
 
   it("GET /api/users/:userId/tweets should return entire tweet list for user", async () => {

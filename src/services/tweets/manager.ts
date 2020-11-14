@@ -11,7 +11,10 @@ class TweetManager implements IManager {
   constructor() {
     this.tweetRepository = getRepository(Tweet);
   }
-  public async getAllTweet(userId: string): Promise<Tweet[]> {
+  public async getAllTweet(): Promise<Tweet[]> {
+    return this.tweetRepository.find({ relations: ['user'] });
+  }
+  public async getAllTweetByUser(userId: string): Promise<Tweet[]> {
     return this.tweetRepository.find({ userId: userId });
   }
 

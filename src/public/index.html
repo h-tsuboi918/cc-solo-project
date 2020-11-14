@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./script.js" type="text/javascript"></script>
+    <title>CC-SOLO-API-Project</title>
+</head>
+
+<body>
+    <div id="user-input">
+        <form onsubmit="register();return false;">
+            <input type="text" name="username" id="username">
+            <input type="submit" value="登録">
+        </form>
+    </div>
+    <div id="tweet-input">
+        <form onsubmit="addTweet();return false;">
+            <input type="text" name="tweet" id="tweet">
+            <input type="submit" value="投稿">
+        </form>
+    </div>
+    <div id="tweet-display"></div>
+</body>
+
+</html>

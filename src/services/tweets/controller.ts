@@ -6,7 +6,7 @@ import BaseController from "../common/controller";
 import User from "entities/User";
 
 class TweetController extends BaseController {
-  public path: string = "/api/users";
+  public path: string = "/api";
   public router: Router;
 
   protected manager: TweetManager;
@@ -24,15 +24,28 @@ class TweetController extends BaseController {
    */
   protected createRouter(): Router {
     const router = Router();
-    router.get("/:userId/tweets", this.getAll);
-    router.get("/:userId/tweets/:id", this.get);
-    router.post("/:userId/tweets", this.post);
-    router.patch("/:userId/tweets/:id", this.patch);
-    router.delete("/:userId/tweets/:id", this.delete);
+    router.get("/tweets", this.getAll);
+    router.get("/users/:userId/tweets", this.getAllByUser);
+    router.get("/users/:userId/tweets/:id", this.get);
+    router.post("/users/:userId/tweets", this.post);
+    router.patch("/users/:userId/tweets/:id", this.patch);
+    router.delete("/users/:userId/tweets/:id", this.delete);
     return router;
   }
 
-  protected getAll = async (
+  protected getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const tweets = await this.manager.getAllTweet();
+      if (!tweets) {
+        return res.status(404).send({ error: "tweet not found" });
+      }
+      res.json(tweets);
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  protected getAllByUser = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -42,7 +55,7 @@ class TweetController extends BaseController {
       if (!user) {
         return res.status(404).send({ error: "user not found" });
       }
-      const tweets = await this.manager.getAllTweet(user.id);
+      const tweets = await this.manager.getAllTweetByUser(user.id);
       if (!tweets) {
         return res.status(404).send({ error: "tweet not found" });
       }

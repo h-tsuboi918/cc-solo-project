@@ -21,6 +21,7 @@ TsuttaketerではAPIエンドポイントを利用してつぶやきの投稿と
 Tweetsエンドポイントはユーザを指定して実行します
 |エンドポイント|メソッド|説明|リクエストボディ|
 |-|-|-|-|
+|/api/tweets|GET|つぶやきの一覧を返します|-|
 |/api/users/:userId/tweets|GET|指定したユーザのつぶやきの一覧を返します|-|
 |/api/users/:userId/tweets/:tweetId|GET|指定したユーザの指定したつぶやきを返します|-|
 |/api/users/:userId/tweets|POST|指定したユーザでつぶやきを投稿します|{ "text": string }|

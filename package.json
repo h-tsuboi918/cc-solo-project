@@ -16,7 +16,7 @@
     "rollback": "yarn orm migration:revert",
     "testConnection": "ts-node -r dotenv/config src/scripts/testConnection.ts",
     "test": "mocha --inspect -r ts-node/register -r dotenv/config src/tests/index.ts && yarn lint",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node -r dotenv/config dist/index.js",
     "pre-commit": "yarn lint"
   },
   "husky": {
