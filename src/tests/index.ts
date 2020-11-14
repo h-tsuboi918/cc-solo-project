@@ -25,17 +25,20 @@ describe("tsuttakater API Server", () => {
 
   beforeEach(async () => {
     /*** setup ***/
-    //insert test data;
+    //insert test data
     testUser = new User();
     testUser.id = "3461cac2-35bd-4d45-a163-f220beb43d76";
     testUser.username = "test user";
     testUser = await userRepository.save(testUser);
-    //insert tweet data;
+    //insert tweet data
     testTweet = new Tweet();
     testTweet.id = "4562cac2-35bd-4d45-a163-f220beb43d76";
     testTweet.text = "test tweet";
     testTweet.userId = testUser.id;
     testTweet = await tweetRepository.save(testTweet);
+    //make relation
+    testUser.tweets = [];
+    testUser.tweets.push(testTweet);
 
     request = chai.request(server).keepOpen();
   });
@@ -58,7 +61,7 @@ describe("tsuttakater API Server", () => {
     JSON.parse(res.text).length.should.equal(1);
   });
 
-  it("GET /api/users/:userId should be return user", async () => {
+  it("GET /api/users/:userId should be return user with tweets", async () => {
     //setup
     const endpoint = "/api/users/" + testUser.id;
     //exercise
@@ -69,7 +72,7 @@ describe("tsuttakater API Server", () => {
     JSON.parse(res.text).should.deep.equal(testUser);
   });
 
-  it("POST /api/users/ should register new user", async () => {
+  it("POST /api/users should register new user", async () => {
     //setup
     const endpoint = "/api/users";
     const sampleUser = new User();
@@ -84,6 +87,7 @@ describe("tsuttakater API Server", () => {
 
     //setup
     sampleUser.id = JSON.parse(res.text).id;
+    sampleUser.tweets = [];
     const endpoint2 = "/api/users/" + sampleUser.id;
     //exercise
     const res2 = await request.get(endpoint2);

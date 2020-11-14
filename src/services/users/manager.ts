@@ -14,7 +14,7 @@ class UserManager implements IManager {
   }
 
   public async getUser(id: string): Promise<User> {
-    return this.userRepository.findOne(id);
+    return this.userRepository.findOne({ where: { id: id }, relations: ['tweets'] });
   }
 
   public async createUser(inputUser: Partial<User>): Promise<User> {
