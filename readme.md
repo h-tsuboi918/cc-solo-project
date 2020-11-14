@@ -24,5 +24,5 @@ Tweetsエンドポイントはユーザを指定して実行します
 |/api/users/:userId/tweets|GET|指定したユーザのつぶやきの一覧を返します|
 |/api/users/:userId/tweets/:tweetId|GET|指定したユーザの指定したつぶやきを返します|
 |/api/users/:userId/tweets|POST|指定したユーザでつぶやきを投稿します|
-|/api/users/:userId/tweets/tweetId|PATCH|指定したユーザの指定したつぶやきを変更します|
-|/api/users/:userId/tweets/tweetId|DELETE|指定したユーザの指定したつぶやきを削除します|
+|/api/users/:userId/tweets/:tweetId|PATCH|指定したユーザの指定したつぶやきを変更します|
+|/api/users/:userId/tweets/:tweetId|DELETE|指定したユーザの指定したつぶやきを削除します|
